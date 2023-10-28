@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Function for background rotation
   function updateBackground() {
-    fetch('https://unsplash.it/1920/1080/?random')
+    fetch('https://picsum.photos/1920/1080')
       .then(response => {
         preloadImage(response.url, function(loadedUrl) {
           document.body.style.backgroundImage = `url(${loadedUrl})`;
