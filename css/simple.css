@@ -7,6 +7,10 @@ body {
   background-repeat: no-repeat;
   transition: background-image 1s ease-in-out;
   }
+  body.loaded {
+    will-change: background-image;
+    transition: background-image 0.5s ease-in-out;
+  }
   #image-wrapper {
     position: relative;
     width: 800px;

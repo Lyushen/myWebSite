@@ -1,26 +1,22 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // Initialize web worker
-  const worker = new Worker('backgroundWorker.js');
-
-  worker.addEventListener('message', function(e) {
-    const { action, url, content } = e.data;
-    
-    if (action === 'imagePreloaded') {
-      document.body.style.backgroundImage = `url(${url})`;
-      document.body.classList.add('loaded');
+document.addEventListener("DOMContentLoaded", function() {
+  // Function to preload image
+    function preloadImage(url, callback) {
+      const img = new Image();
+      img.src = url;
+      img.onload = function() {
+        callback(url);
+      };
     }
-    else if (action === 'contentParsed') {
-      const contentElement = document.getElementById('content');
-      contentElement.innerHTML = content;
-      contentElement.classList.add('loaded');
-    }
-  });
+  
 
   // Function for background rotation
   function updateBackground() {
     fetch('https://picsum.photos/1920/1080')
       .then(response => {
-        worker.postMessage({ action: 'preloadImage', payload: response.url });
+        preloadImage(response.url, function(loadedUrl) {
+          document.body.style.backgroundImage = `url(${loadedUrl})`;
+          document.body.classList.add('loaded');
+        });
       });
   }
 
@@ -29,10 +25,12 @@ document.addEventListener("DOMContentLoaded", function () {
   setInterval(updateBackground, 3000);
 
   function loadPage(url) {
-    const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function () {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
       if (xhr.readyState == 4 && xhr.status == 200) {
-        worker.postMessage({ action: 'parseContent', payload: xhr.responseText });
+        const content = document.getElementById('content');
+        content.innerHTML = xhr.responseText;
+        content.classList.add('loaded');
       }
     };
     xhr.open('GET', url, true);
@@ -42,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
   loadPage('home.html');
 
   document.querySelectorAll('.topnav a').forEach(link => {
-    link.addEventListener('click', function (e) {
+    link.addEventListener('click', function(e) {
       e.preventDefault();
       loadPage(this.getAttribute('data-page'));
     });
