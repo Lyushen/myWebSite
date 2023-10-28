@@ -17,16 +17,20 @@ transition: background-image 1s ease-in-out;
   transition: opacity 1s ease-in-out;
   width: 800px;
 }
-#content {
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  background: rgba(255, 255, 255, 0.8);  /* Semi-transparent white background */
-  padding: 20px;  /* Padding around text */
-  border-radius: 10px;  /* Rounded corners */
+#content * {
+  position: relative;
+  color: #fff;  /* White text for better contrast */
 }
 
-#content * {
-  color: #000;  /* Black text */
+#content *::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.6), transparent);
 }
 .loaded #content {
   opacity: 1;
