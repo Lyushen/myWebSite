@@ -17,9 +17,6 @@ transition: background-image 1s ease-in-out;
   transition: opacity 1s ease-in-out;
   width: 800px;
 }
-#content * {
-  filter: url(#inverted);
-}
 
 .loaded #content {
   opacity: 1;

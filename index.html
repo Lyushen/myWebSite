@@ -7,15 +7,37 @@
   <script src="script/script.js" defer></script>
 </head>
 <body>
-  <svg style="position: absolute; left: 0; top: 0; width: 0; height: 0;">
-    <filter id="inverted">
-      <feComponentTransfer in="SourceGraphic">
-        <feFuncR type="table" tableValues="1 0"></feFuncR>
-        <feFuncG type="table" tableValues="1 0"></feFuncG>
-        <feFuncB type="table" tableValues="1 0"></feFuncB>
-      </feComponentTransfer>
-    </filter>
-  </svg>
+  <canvas id="myCanvas" width="500" height="500"></canvas>
+  <script>
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');
+
+    var gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+    gradient.addColorStop("0", "black");
+    gradient.addColorStop("0.5", "white");
+    gradient.addColorStop("1.0", "black");
+
+    // Draw background
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Draw text
+    ctx.font = '48px serif';
+    ctx.fillStyle = 'black';
+    ctx.fillText('Dynamic Text', 50, 100);
+
+    var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    var data = imageData.data;
+
+    for (var i = 0; i < data.length; i += 4) {
+      // Invert color
+      data[i]     = 255 - data[i];     // red
+      data[i + 1] = 255 - data[i + 1]; // green
+      data[i + 2] = 255 - data[i + 2]; // blue
+    }
+
+    ctx.putImageData(imageData, 0, 0);
+  </script>
   <div class="topnav">
     <a href="#" class="active" data-page="home.html">Home</a>
     <a href="#" data-page="games.html">My Games</a>
