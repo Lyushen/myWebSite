@@ -3,7 +3,7 @@ self.addEventListener('message', function(event) {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4 && xhr.status == 200) {
-        self.postMessage(xhr.responseText);
+        self.postMessage({content: xhr.responseText, url: url});
       }
     };
     xhr.open('GET', url, true);

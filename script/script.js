@@ -5,45 +5,48 @@ document.addEventListener("DOMContentLoaded", async function () {
   const pageCache = {};
 
   imageWorker.onmessage = function(event) {
-    const preloadedImage = URL.createObjectURL(event.data);
-    imageQueue.push(preloadedImage);
-    if (imageQueue.length > 1) {
-      document.body.style.backgroundImage = `url(${imageQueue.shift()})`;
+    const preloadedImage = event.data;
+    if (document.body.style.backgroundImage === "") {
+      document.body.style.backgroundImage = `url(${preloadedImage})`;
+      document.body.classList.add('loaded');
+    } else {
+      imageQueue.push(preloadedImage);
     }
   };
 
   pageWorker.onmessage = function(event) {
-    const url = event.data.url;
-    const pageContent = event.data.content;
-    pageCache[url] = pageContent;
+    const { content, url } = event.data;
+    pageCache[url] = content;
   };
 
-  // Kick-off background workers for initial tasks
-  imageWorker.postMessage('https://picsum.photos/1920/1080');
+  // Trigger initial load
+  imageWorker.postMessage('init');
   pageWorker.postMessage('home.html');
+  await new Promise(r => setTimeout(r, 100)); // Small delay for demo
 
-  // Update background every 3000ms
+  // Function for background rotation
   setInterval(() => {
-    imageWorker.postMessage('https://picsum.photos/1920/1080');
+    imageWorker.postMessage('rotate');
+    if (imageQueue.length > 0) {
+      document.body.style.backgroundImage = `url(${imageQueue.shift()})`;
+    }
   }, 3000);
 
-  // Function for loading pages
-  function loadPage(url) {
-    if (pageCache[url]) {
-      const content = document.getElementById('content');
-      content.innerHTML = pageCache[url];
-      content.classList.add('loaded');
-    } else {
-      pageWorker.postMessage(url);
-    }
-  }
-
+  // Rest of the code remains the same
   const navLinks = document.querySelectorAll('.topnav a');
   navLinks.forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault();
-      loadPage(this.getAttribute('data-page'));
+      const url = this.getAttribute('data-page');
+      if (pageCache[url]) {
+        const content = document.getElementById('content');
+        content.innerHTML = pageCache[url];
+        content.classList.add('loaded');
+      } else {
+        pageWorker.postMessage(url);
+      }
     });
+    
     link.addEventListener('mouseover', function (e) {
       const url = this.getAttribute('data-page');
       if (!pageCache[url]) {

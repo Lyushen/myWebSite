@@ -1,7 +1,5 @@
 self.addEventListener('message', async function(event) {
-    const url = event.data;
+    const url = 'https://picsum.photos/1920/1080';
     const response = await fetch(url);
-    const imageBlob = await response.blob();
-    self.postMessage(imageBlob);
+    self.postMessage(response.url);
   });
-  
