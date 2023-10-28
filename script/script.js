@@ -7,11 +7,33 @@ document.addEventListener("DOMContentLoaded", function() {
         callback(url);
       };
     }
+  // Function to load pages
+function loadPage(url) {
+  const content = document.getElementById('content');
   
+  // Make content disappear smoothly
+  content.classList.remove('loaded');
+  content.classList.add('loading');
+
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      content.innerHTML = xhr.responseText;
+
+      // Make content appear smoothly
+      setTimeout(() => {
+        content.classList.remove('loading');
+        content.classList.add('loaded');
+      }, 50);
+    }
+  };
+  xhr.open('GET', url, true);
+  xhr.send();
+}
 
   // Function for background rotation
   function updateBackground() {
-    fetch('https://source.unsplash.com/random/1920x1080')
+    fetch('https://unsplash.it/1920/1080/?random')
       .then(response => {
         preloadImage(response.url, function(loadedUrl) {
           document.body.style.backgroundImage = `url(${loadedUrl})`;
