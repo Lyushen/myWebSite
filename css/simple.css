@@ -81,5 +81,21 @@ body {
       float: none;
       display: block;
     }
+    table {
+      position: absolute;
+      right: 0;
+      border: 1px solid rgba(255, 255, 255, 0.502);
+      border-collapse: collapse;
+    }
     
+    tr {
+      background-color: rgba(192, 192, 192, 0.194);
+    }
+    
+    th, td {
+      vertical-align: top;
+      padding: 0.5em;
+      text-align: left;
+    }
+
   }
