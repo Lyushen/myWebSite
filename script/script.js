@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   codeBackground.style.whiteSpace = 'pre';
   codeBackground.style.fontFamily = 'monospace';
   codeBackground.style.fontSize = 'small';
+  codeBackground.style.right = '0';
+  codeBackground.style.top = '0';
   document.body.appendChild(codeBackground);
 
   async function preloadFirstImage() {
@@ -50,27 +52,28 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   setInterval(updateBackground, 3000);
 
-  async function loadPage(url) {
-    if (pageCache[url]) {
-      const content = document.getElementById('content');
-      content.innerHTML = pageCache[url];
-      content.classList.add('loaded');
-      codeBackground.textContent = escapeHTML(pageCache[url]);
-    } else {
-      const xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-          pageCache[url] = xhr.responseText;
-          const content = document.getElementById('content');
-          content.innerHTML = xhr.responseText;
-          content.classList.add('loaded');
-          codeBackground.textContent = escapeHTML(xhr.responseText);
-        }
-      };
-      xhr.open('GET', url, true);
-      xhr.send();
-    }
+// Update loadPage function
+async function loadPage(url) {
+  if (pageCache[url]) {
+    const content = document.getElementById('content');
+    content.innerHTML = pageCache[url];
+    content.classList.add('loaded');
+    codeBackground.textContent = pageCache[url];
+  } else {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        pageCache[url] = xhr.responseText;
+        const content = document.getElementById('content');
+        content.innerHTML = xhr.responseText;
+        content.classList.add('loaded');
+        codeBackground.textContent = xhr.responseText;
+      }
+    };
+    xhr.open('GET', url, true);
+    xhr.send();
   }
+}
 
   const navLinks = document.querySelectorAll('.topnav a');
   navLinks.forEach(link => {
