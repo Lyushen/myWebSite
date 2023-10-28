@@ -1,20 +1,15 @@
 self.addEventListener('message', function(e) {
     const { action, payload } = e.data;
-    if (action === 'updateBackground') {
-      fetch('https://picsum.photos/1920/1080')
-        .then(response => response.url)
-        .then(url => {
-          self.postMessage({ action: 'backgroundUpdated', url });
-        });
-    }
-    else if (action === 'loadPage') {
-      const xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-          self.postMessage({ action: 'pageLoaded', content: xhr.responseText });
-        }
+    
+    if (action === 'preloadImage') {
+      const img = new Image();
+      img.src = payload;
+      img.onload = function () {
+        self.postMessage({ action: 'imagePreloaded', url: payload });
       };
-      xhr.open('GET', payload, true);
-      xhr.send();
     }
-  });
+    else if (action === 'parseContent') {
+      // Assume parsing to be done here, for demonstration we send back same content
+      self.postMessage({ action: 'contentParsed', content: payload });
+    }
+  });  

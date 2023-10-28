@@ -4,29 +4,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
   worker.addEventListener('message', function(e) {
     const { action, url, content } = e.data;
-    if (action === 'backgroundUpdated') {
+    
+    if (action === 'imagePreloaded') {
       document.body.style.backgroundImage = `url(${url})`;
       document.body.classList.add('loaded');
     }
-    else if (action === 'pageLoaded') {
+    else if (action === 'contentParsed') {
       const contentElement = document.getElementById('content');
       contentElement.innerHTML = content;
       contentElement.classList.add('loaded');
     }
   });
 
-  // Function to preload image
-  function preloadImage(url, callback) {
-    const img = new Image();
-    img.src = url;
-    img.onload = function () {
-      callback(url);
-    };
-  }
-
   // Function for background rotation
   function updateBackground() {
-    worker.postMessage({ action: 'updateBackground' });
+    fetch('https://picsum.photos/1920/1080')
+      .then(response => {
+        worker.postMessage({ action: 'preloadImage', payload: response.url });
+      });
   }
 
   // Update background initially and then every 3000ms
@@ -34,7 +29,14 @@ document.addEventListener("DOMContentLoaded", function () {
   setInterval(updateBackground, 3000);
 
   function loadPage(url) {
-    worker.postMessage({ action: 'loadPage', payload: url });
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        worker.postMessage({ action: 'parseContent', payload: xhr.responseText });
+      }
+    };
+    xhr.open('GET', url, true);
+    xhr.send();
   }
 
   loadPage('home.html');
