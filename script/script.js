@@ -1,6 +1,17 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
   const imageQueue = [];
   const pageCache = {};
+
+  async function preloadFirstImage() {
+    const response = await fetch('https://picsum.photos/1920/1080');
+    const preloadedImage = await preloadImage(response.url);
+    document.body.style.backgroundImage = `url(${preloadedImage})`;
+    document.body.classList.add('loaded');
+  }
+
+  async function preloadFirstPage() {
+    await loadPage('home.html');
+  }
 
   // Function to preload image
   function preloadImage(url) {
@@ -13,6 +24,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  await preloadFirstImage();
+  await preloadFirstPage();
+
   // Function for background rotation
   async function updateBackground() {
     const response = await fetch('https://picsum.photos/1920/1080');
@@ -20,12 +34,10 @@ document.addEventListener("DOMContentLoaded", function () {
     imageQueue.push(preloadedImage);
     if (imageQueue.length > 1) {
       document.body.style.backgroundImage = `url(${imageQueue.shift()})`;
-      document.body.classList.add('loaded');
     }
   }
 
-  // Update background initially and then every 3000ms
-  updateBackground();
+  // Update background every 3000ms
   setInterval(updateBackground, 3000);
 
   async function loadPage(url) {
@@ -47,8 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
       xhr.send();
     }
   }
-
-  loadPage('home.html');
 
   const navLinks = document.querySelectorAll('.topnav a');
   navLinks.forEach(link => {
