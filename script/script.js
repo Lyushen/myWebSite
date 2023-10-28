@@ -2,16 +2,20 @@ document.addEventListener("DOMContentLoaded", async function () {
   const imageQueue = [];
   const pageCache = {};
 
-  const codeBackground = document.createElement('pre');
-  codeBackground.style.position = 'fixed';
-  codeBackground.style.zIndex = '-1';
-  codeBackground.style.opacity = '0.6';
-  codeBackground.style.whiteSpace = 'pre';
-  codeBackground.style.fontFamily = 'monospace';
-  codeBackground.style.fontSize = 'small';
-  codeBackground.style.right = '0';
-  codeBackground.style.top = '0';
-  document.body.appendChild(codeBackground);
+// Obtain the height of your top bar
+const topBarHeight = document.querySelector('.top-bar').offsetHeight || 50; // Change '.top-bar' to your top bar's selector
+
+const codeBackground = document.createElement('pre');
+codeBackground.style.position = 'fixed';
+codeBackground.style.zIndex = '-1';
+codeBackground.style.opacity = '0.6';
+codeBackground.style.whiteSpace = 'pre-wrap'; // Allow text wrapping
+codeBackground.style.fontFamily = 'monospace';
+codeBackground.style.fontSize = 'small';
+codeBackground.style.right = '0';
+codeBackground.style.top = `${topBarHeight}px`; // Start below the top bar
+codeBackground.style.overflowWrap = 'break-word'; // Wrap long lines of text
+document.body.appendChild(codeBackground);
 
   async function preloadFirstImage() {
     const response = await fetch('https://picsum.photos/1920/1080');
