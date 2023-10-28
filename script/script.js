@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
+  // Function to preload image
+    function preloadImage(url, callback) {
+      const img = new Image();
+      img.src = url;
+      img.onload = function() {
+        callback(url);
+      };
+    }
+  
 
-  // Function for preloading images
-  function preloadImage(url, callback) {
-    const img = new Image();
-    img.src = url;
-    img.onload = function() {
-      callback(url);
-    };
-  }
-
-  // Function for rotating background
+  // Function for background rotation
   function updateBackground() {
     fetch('https://unsplash.it/1920/1080/?random')
       .then(response => {
@@ -20,32 +20,25 @@ document.addEventListener("DOMContentLoaded", function() {
       });
   }
 
-  // Initialize and repeat background update
+  // Update background initially and then every 3000ms
   updateBackground();
   setInterval(updateBackground, 3000);
 
-  // Function to load pages
   function loadPage(url) {
-    const content = document.getElementById('content');
-    content.style.opacity = 0;
-
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
       if (xhr.readyState == 4 && xhr.status == 200) {
+        const content = document.getElementById('content');
         content.innerHTML = xhr.responseText;
-        setTimeout(() => {
-          content.style.opacity = 1;
-        }, 50);
+        content.classList.add('loaded');
       }
     };
     xhr.open('GET', url, true);
     xhr.send();
   }
 
-  // Initial page load
   loadPage('home.html');
 
-  // Event listeners for navigation links
   document.querySelectorAll('.topnav a').forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
