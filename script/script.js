@@ -42,7 +42,49 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
   });
 
-  function loadPage(url) {
-    // The existing loadPage function stays the same
+  
+  async function loadPage(url) {
+    if (pageCache[url]) {
+      const content = document.getElementById('content');
+      content.innerHTML = pageCache[url];
+      content.classList.add('loaded');
+    } else {
+      const xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          pageCache[url] = xhr.responseText;
+          const content = document.getElementById('content');
+          content.innerHTML = xhr.responseText;
+          content.classList.add('loaded');
+        }
+      };
+      xhr.open('GET', url, true);
+      xhr.send();
+    }
+  }
+
+  const navLinks = document.querySelectorAll('.topnav a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      loadPage(this.getAttribute('data-page'));
+    });
+    link.addEventListener('mouseover', function (e) {
+      const url = this.getAttribute('data-page');
+      if (!pageCache[url]) {
+        preloadPage(url);
+      }
+    });
+  });
+
+  function preloadPage(url) {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        pageCache[url] = xhr.responseText;
+      }
+    };
+    xhr.open('GET', url, true);
+    xhr.send();
   }
 });
