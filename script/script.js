@@ -2,6 +2,15 @@ document.addEventListener("DOMContentLoaded", async function () {
   const imageQueue = [];
   const pageCache = {};
 
+  const codeBackground = document.createElement('pre');
+  codeBackground.style.position = 'fixed';
+  codeBackground.style.zIndex = '-1';
+  codeBackground.style.opacity = '0.6';
+  codeBackground.style.whiteSpace = 'pre';
+  codeBackground.style.fontFamily = 'monospace';
+  codeBackground.style.fontSize = 'small';
+  document.body.appendChild(codeBackground);
+
   async function preloadFirstImage() {
     const response = await fetch('https://picsum.photos/1920/1080');
     const preloadedImage = await preloadImage(response.url);
@@ -13,8 +22,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     await loadPage('home.html');
   }
 
-  // Function to preload image
-  function preloadImage(url) {
+  function escapeHTML(html) {
+    return html.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  async function preloadImage(url) {
     return new Promise((resolve) => {
       const img = new Image();
       img.src = url;
@@ -27,7 +39,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   await preloadFirstImage();
   await preloadFirstPage();
 
-  // Function for background rotation
   async function updateBackground() {
     const response = await fetch('https://picsum.photos/1920/1080');
     const preloadedImage = await preloadImage(response.url);
@@ -37,7 +48,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   }
 
-  // Update background every 3000ms
   setInterval(updateBackground, 3000);
 
   async function loadPage(url) {
@@ -45,6 +55,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       const content = document.getElementById('content');
       content.innerHTML = pageCache[url];
       content.classList.add('loaded');
+      codeBackground.textContent = escapeHTML(pageCache[url]);
     } else {
       const xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function () {
@@ -53,6 +64,7 @@ document.addEventListener("DOMContentLoaded", async function () {
           const content = document.getElementById('content');
           content.innerHTML = xhr.responseText;
           content.classList.add('loaded');
+          codeBackground.textContent = escapeHTML(xhr.responseText);
         }
       };
       xhr.open('GET', url, true);
