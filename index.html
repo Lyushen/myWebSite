@@ -7,6 +7,15 @@
   <script src="script/script.js" defer></script>
 </head>
 <body>
+  <svg style="position: absolute; left: 0; top: 0; width: 0; height: 0;">
+    <filter id="inverted">
+      <feComponentTransfer in="SourceGraphic">
+        <feFuncR type="table" tableValues="1 0"></feFuncR>
+        <feFuncG type="table" tableValues="1 0"></feFuncG>
+        <feFuncB type="table" tableValues="1 0"></feFuncB>
+      </feComponentTransfer>
+    </filter>
+  </svg>
   <div class="topnav">
     <a href="#" class="active" data-page="home.html">Home</a>
     <a href="#" data-page="games.html">My Games</a>
