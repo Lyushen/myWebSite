@@ -17,8 +17,16 @@ transition: background-image 1s ease-in-out;
   transition: opacity 1s ease-in-out;
   width: 800px;
 }
+#content {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  background: rgba(255, 255, 255, 0.8);  /* Semi-transparent white background */
+  padding: 20px;  /* Padding around text */
+  border-radius: 10px;  /* Rounded corners */
+}
+
 #content * {
-  text-shadow: 2px 2px 4px #fff;
+  color: #000;  /* Black text */
 }
 .loaded #content {
   opacity: 1;
