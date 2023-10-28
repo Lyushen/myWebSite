@@ -1,57 +1,87 @@
 document.addEventListener("DOMContentLoaded", async function () {
-  const imageWorker = new Worker('imageWorker.js');
-  const pageWorker = new Worker('pageWorker.js');
   const imageQueue = [];
   const pageCache = {};
 
-  imageWorker.onmessage = function(event) {
-    const preloadedImage = event.data;
-    if (document.body.style.backgroundImage === "") {
-      document.body.style.backgroundImage = `url(${preloadedImage})`;
-      document.body.classList.add('loaded');
-    } else {
-      imageQueue.push(preloadedImage);
-    }
-  };
+  async function preloadFirstImage() {
+    const response = await fetch('https://picsum.photos/1920/1080');
+    const preloadedImage = await preloadImage(response.url);
+    document.body.style.backgroundImage = `url(${preloadedImage})`;
+    document.body.classList.add('loaded');
+  }
 
-  pageWorker.onmessage = function(event) {
-    const { content, url } = event.data;
-    pageCache[url] = content;
-  };
+  async function preloadFirstPage() {
+    await loadPage('home.html');
+  }
 
-  // Trigger initial load
-  imageWorker.postMessage('init');
-  pageWorker.postMessage('home.html');
-  await new Promise(r => setTimeout(r, 100)); // Small delay for demo
+  // Function to preload image
+  function preloadImage(url) {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.src = url;
+      img.onload = function () {
+        resolve(url);
+      };
+    });
+  }
+
+  await preloadFirstImage();
+  await preloadFirstPage();
 
   // Function for background rotation
-  setInterval(() => {
-    imageWorker.postMessage('rotate');
-    if (imageQueue.length > 0) {
+  async function updateBackground() {
+    const response = await fetch('https://picsum.photos/1920/1080');
+    const preloadedImage = await preloadImage(response.url);
+    imageQueue.push(preloadedImage);
+    if (imageQueue.length > 1) {
       document.body.style.backgroundImage = `url(${imageQueue.shift()})`;
     }
-  }, 3000);
+  }
 
-  // Rest of the code remains the same
+  // Update background every 3000ms
+  setInterval(updateBackground, 3000);
+
+  async function loadPage(url) {
+    if (pageCache[url]) {
+      const content = document.getElementById('content');
+      content.innerHTML = pageCache[url];
+      content.classList.add('loaded');
+    } else {
+      const xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          pageCache[url] = xhr.responseText;
+          const content = document.getElementById('content');
+          content.innerHTML = xhr.responseText;
+          content.classList.add('loaded');
+        }
+      };
+      xhr.open('GET', url, true);
+      xhr.send();
+    }
+  }
+
   const navLinks = document.querySelectorAll('.topnav a');
   navLinks.forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault();
-      const url = this.getAttribute('data-page');
-      if (pageCache[url]) {
-        const content = document.getElementById('content');
-        content.innerHTML = pageCache[url];
-        content.classList.add('loaded');
-      } else {
-        pageWorker.postMessage(url);
-      }
+      loadPage(this.getAttribute('data-page'));
     });
-    
     link.addEventListener('mouseover', function (e) {
       const url = this.getAttribute('data-page');
       if (!pageCache[url]) {
-        pageWorker.postMessage(url);
+        preloadPage(url);
       }
     });
   });
+
+  function preloadPage(url) {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        pageCache[url] = xhr.responseText;
+      }
+    };
+    xhr.open('GET', url, true);
+    xhr.send();
+  }
 });
