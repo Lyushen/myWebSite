@@ -52,7 +52,7 @@ body {
 /* top bar nav */
 .topnav {
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* Changed from hidden to visible */
   background-color: #333;
 }
 
@@ -84,37 +84,64 @@ body {
   display: inline-block;
 }
 
-.dropdown-content {
+.dropdown-content,
+.dropdown-content-sub {
   display: none;
   position: absolute;
-  left: 0;
   background-color: #f9f9f9;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  animation: slidein 0.5s forwards;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
 }
 
-.dropdown-content a {
+.dropdown-content a,
+.dropdown-content-sub a {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
-.dropdown-content a:hover {
-  background-color: #f1f1f1
+.dropdown-content a:hover,
+.dropdown-content-sub a:hover {
+  background-color: #f1f1f1;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content,
+.dropdown-sub:hover .dropdown-content-sub {
   display: block;
+}
+
+.dropdown-sub {
+  position: relative;
+}
+
+.dropdown-content-sub {
+  left: 100%;
+  top: 0;
+  animation: slideinSub 0.5s forwards;
 }
 
 @keyframes slidein {
   from {
-    left: -200px;
+    transform: translate3d(-200px, 0, 0);
   }
   to {
-    left: 0;
+    transform: translate3d(0, 0, 0);
   }
+}
+
+@keyframes slideinSub {
+  from {
+    transform: translate3d(200px, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.dropdown-content {
+  animation: slidein 0.5s forwards;
 }
 
   /* Responsive navigation menu (for mobile devices) */
