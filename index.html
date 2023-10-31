@@ -12,29 +12,45 @@
   <div class="topnav">
     <a href="#" class="active" data-page="home.html">Home</a>
     <a href="#" data-page="games.html">My Games</a>
-
-      <div class="dropdown">
+    
+    <div class="dropdown">
       <button class="dropbtn" onclick="topDropdown()">Apprenticeship
         <span class="caret-down"></span>
       </button>
-      <div class="dropdown-content" id="myDropdown">
-        <button class="dropbtn" onclick="topDropdown()">Customer Support
-          <span class="caret-right"></span>
-        </button>
-        <a href="#">Task 1</a>
-        <a href="#">Task 2</a>
-        <a href="#">Task 3</a>
+      <div class="dropdown-content" id="topDropdown">
+        <div class="submenu">
+          <button class="dropbtn">Customer Support
+            <span class="caret-right"></span>
+          </button>
+          <div class="submenu-content">
+            <a href="#">Task 1</a>
+            <a href="#">Task 2</a>
+            <a href="#">Task 3</a>
+          </div>
+        </div>
+        <div class="submenu">
+          <button class="dropbtn">Web Design
+            <span class="caret-right"></span>
+          </button>
+          <div class="submenu-content">
+            <a href="#">Task 1</a>
+            <a href="#">Task 2</a>
+            <a href="#">Task 3</a>
+          </div>
+        </div>
       </div>
-      <div class="dropdown-content" id="myDropdown">
-        <button class="dropbtn" onclick="topDropdown()">Web Design
-          <span class="caret-right"></span>
-        </button>
-        <a href="#">Task 1</a>
-        <a href="#">Task 2</a>
-        <a href="#">Task 3</a>
-      </div>
-      </div> 
-
+    </div> 
+    
+    <a href="#" data-page="heroes.html">My Heroes</a>
+    
+    <div class="topnav-right">
+      <a href="#" data-page="puzzle.html">Puzzles</a>
+      <a href="#" data-page="about.html">About</a>
+    </div>
+  </div>
+  <div id="content"></div>
+</body>
+</html>
     <!-- <div class="dropdown">
       <button class="dropbtn">Apprenticeship <span class="caret-down"></span></button>
       <div class="dropdown-content">
@@ -56,14 +72,3 @@
         </div>
       </div>
     </div> -->
-  
-    <a href="#" data-page="heroes.html">My Heroes</a>
-
-    <div class="topnav-right">
-      <a href="#" data-page="puzzle.html">Puzzles</a>
-      <a href="#" data-page="about.html">About</a>
-    </div>
-  </div>
-  <div id="content"></div>
-</body>
-</html>
