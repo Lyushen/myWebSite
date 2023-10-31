@@ -1,63 +1,64 @@
 body {
   font-family: sans-serif;
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-  body.loaded {
-    transform: translateZ(0);
-    transition: background-image 0.5s ease-in-out;
-  }
-  #image-wrapper {
-    position: relative;
-    width: 800px;
-  }
-  #dynamic-image {
-    position: absolute;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    width: 800px;
-  }
-  #content {
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-  }
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-  
-  #content.loading {
-    opacity: 0;
-    transition: opacity 0.5s ease;
-  }
-  
-  #content.loaded {
-    opacity: 1;
-    transition: opacity 0.5s ease;
-  }
+body.loaded {
+  transform: translateZ(0);
+  transition: background-image 0.5s ease-in-out;
+}
 
+#image-wrapper {
+  position: relative;
+  width: 800px;
+}
 
-  #dynamic_iframe {
-    transition: opacity 1s ease-in-out;
-    opacity: 0;
-  }
-  .loaded #dynamic_iframe {
-    opacity: 1;
-  }
-    
-  * {
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 0, 0, 0.9), 0 0 35px rgba(0, 0, 0, 1);
-    color: #FFFFFF;
-  }
+#dynamic-image {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  width: 800px;
+}
 
-/* top bar nav */
-/* Navbar container */
+#content {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+#content.loading {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+#content.loaded {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+#dynamic_iframe {
+  transition: opacity 1s ease-in-out;
+  opacity: 0;
+}
+
+.loaded #dynamic_iframe {
+  opacity: 1;
+}
+
+* {
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 0, 0, 0.9), 0 0 35px rgba(0, 0, 0, 1);
+  color: #FFFFFF;
+}
+
+/* Top Bar Navigation Styles */
 .navbar {
   overflow: hidden;
   background-color: #333;
   font-family: Arial;
 }
 
-/* Links inside the navbar */
 .navbar a {
   float: left;
   font-size: 16px;
@@ -67,13 +68,11 @@ body {
   text-decoration: none;
 }
 
-/* The dropdown container */
 .dropdown {
   float: left;
   overflow: hidden;
 }
 
-/* Dropdown button */
 .dropdown .dropbtn {
   font-size: 16px;
   border: none;
@@ -81,16 +80,14 @@ body {
   color: white;
   padding: 14px 16px;
   background-color: inherit;
-  font-family: inherit; /* Important for vertical align on mobile phones */
-  margin: 0; /* Important for vertical align on mobile phones */
+  font-family: inherit;
+  margin: 0;
 }
 
-/* Add a red background color to navbar links on hover */
 .navbar a:hover, .dropdown:hover .dropbtn {
   background-color: red;
 }
 
-/* Dropdown content (hidden by default) */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -100,7 +97,6 @@ body {
   z-index: 1;
 }
 
-/* Links inside the dropdown */
 .dropdown-content a {
   float: none;
   color: black;
@@ -110,17 +106,14 @@ body {
   text-align: left;
 }
 
-/* Add a grey background color to dropdown links on hover */
 .dropdown-content a:hover {
   background-color: #ddd;
 }
 
-/* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* Creating Top Bar menu symbols for the drop-down list */
 .caret-down::before {
   content: "";
   border-left: 5px solid transparent;
@@ -141,12 +134,9 @@ body {
   vertical-align: middle;
 }
 
-
-  /* Responsive navigation menu (for mobile devices) */
-  @media screen and (max-width: 600px) {
-    .topnav a, .topnav-right {
-      float: none;
-      display: block;
-    }
-
+@media screen and (max-width: 600px) {
+  .navbar a, .navbar .dropdown, .topnav-right {
+    float: none;
+    display: block;
   }
+}
