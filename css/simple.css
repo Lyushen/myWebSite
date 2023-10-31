@@ -119,7 +119,7 @@ body {
 .dropdown-content-sub {
   left: 100%;
   top: 0;
-  animation: slideinSub 0.5s forwards;
+  animation: slideinTopToBottom 0.2s forwards;
 }
 
 @keyframes slidein {
@@ -141,7 +141,7 @@ body {
 }
 
 .dropdown-content {
-  animation: slidein 0.5s forwards;
+  animation: slidein 0.2s forwards;
 }
 
   /* Responsive navigation menu (for mobile devices) */
