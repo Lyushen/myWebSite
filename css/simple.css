@@ -122,6 +122,15 @@ body {
   animation: slideinTopToBottom 0.2s forwards;
 }
 
+@keyframes slideinTopToBottom {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 @keyframes slidein {
   from {
     transform: translate3d(-200px, 0, 0);
