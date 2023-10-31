@@ -9,6 +9,20 @@ document.addEventListener("DOMContentLoaded", async function () {
     document.body.classList.add('loaded');
   }
 
+  function topDropdown() {
+    document.getElementById("topDropdown").classList.toggle("show");
+  }
+  
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function(e) {
+    if (!e.target.matches('.dropbtn')) {
+    var myDropdown = document.getElementById("topDropdown");
+      if (myDropdown.classList.contains('show')) {
+        myDropdown.classList.remove('show');
+      }
+    }
+  }
+
   async function preloadFirstPage() {
     await loadPage('home.html');
   }
