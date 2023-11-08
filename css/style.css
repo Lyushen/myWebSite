@@ -101,17 +101,20 @@ body {
   }
   /* Sudoku table */
   table.sudokuTable {
-    width: 3em;
-    height: 3em;
+
     align-content: center;
     color: black;
     border: 5px solid black;
     background-color: white;
   }
   .sudokuTable td {
+    width: 3em;
+    height: 3em;
     border: 1px solid black;
     border-collapse: collapse;
   }
   .sudokuTableInner td {
+    width: 3em;
+    height: 3em;
     border: 2.5px solid black;
   }
