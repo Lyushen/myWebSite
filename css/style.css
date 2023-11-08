@@ -103,12 +103,14 @@ body {
  .sudokuTable table {
     border: 3px solid black;
     border-collapse: collapse;
+    text-align: center;
+    background-color: white;
   }
   .sudokuTable td {
     width: 3em;
     height: 3em;
     align-content: center;
-    color: black;
+    color: rgb(255, 0, 0);
     border: 1px solid black;
   }
   .sudokuTable td:nth-child(3n)
@@ -119,3 +121,10 @@ body {
   {
   border-bottom: 2px solid black;
   }
+  .blackCells  {
+    background-color: rgb(255, 255, 255);  
+    color: black;
+ }
+ .sudokuTable tr:hover {
+  color: red;
+}
