@@ -1,1 +1,121 @@
- 
+body {
+  font-family: sans-serif;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  body.loaded {
+    transform: translateZ(0);
+    transition: background-image 0.5s ease-in-out;
+  }
+  #image-wrapper {
+    position: relative;
+    width: 800px;
+  }
+  #dynamic-image {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    width: 800px;
+  }
+  #content {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  
+  #content.loading {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  #content.loaded {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+  }
+
+
+  #dynamic_iframe {
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+  }
+  .loaded #dynamic_iframe {
+    opacity: 1;
+  }
+    
+  * {
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 0, 0, 0.9), 0 0 35px rgba(0, 0, 0, 1);
+    color: #FFFFFF;
+  }
+  .topnav {
+    position: relative;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    background-color: #00a2ffac;
+    color: black;
+  }
+  
+  .topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+  }
+  
+  .topnav-right {
+    float: right;
+  }
+  /* Responsive navigation menu (for mobile devices) */
+  @media screen and (max-width: 600px) {
+    .topnav a, .topnav-right {
+      float: none;
+      display: block;
+    }
+  }
+  /* Puzzle css */
+  table.crossword, .crossword td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  .crossword td {
+    width: 3em;
+    height: 3em;
+    vertical-align: top;
+    background-color: white;
+    color: black;
+  }
+  .crossword .black {
+    background-color: black;
+    margin: 1px;
+  }
+  /* Sudoku table */
+ .sudokuTable table {
+    border: 3px solid black;
+    border-collapse: collapse;
+  }
+  .sudokuTable td {
+    width: 3em;
+    height: 3em;
+    align-content: center;
+    color: black;
+    border: 1px solid black;
+  }
+  .sudokuTable td:nth-child(3n)
+  {
+    border-right: 2px solid black;
+  }
+  .sudokuTable tr:nth-child(3n)
+  {
+  border-bottom: 2px solid black;
+  }
