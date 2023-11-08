@@ -24,10 +24,9 @@ document.addEventListener("DOMContentLoaded", async function () {
       };
     });
   }
-  
-  await preloadFirstPage();
-  await preloadFirstImage();
 
+  await preloadFirstImage();
+  await preloadFirstPage();
 
   // Function for background rotation
   async function updateBackground() {
