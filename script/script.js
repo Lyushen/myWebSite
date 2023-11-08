@@ -2,14 +2,12 @@ document.addEventListener("DOMContentLoaded", async function () {
   const imageQueue = [];
   const pageCache = {};
 
-  async function preloadFirstImage() {
-    var clientW = window.innerWidth;
-    var clientH = window.innerHeight;
-    const response = await fetch(`https://picsum.photos/${clientW}/${clientH}`); // Use backticks
+/*   async function preloadFirstImage() {
+    const response = await fetch(`https://picsum.photos/${window.innerWidth}/${window.innerHeight}`); // Use backticks
     const preloadedImage = await preloadImage(response.url);
     document.body.style.backgroundImage = `url(${preloadedImage})`;
     document.body.classList.add('loaded');
-  }
+  } */
 
   
   async function preloadFirstPage() {
@@ -32,9 +30,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   // Function for background rotation
   async function updateBackground() {
-    var clientW = window.innerWidth;
-    var clientH = window.innerHeight;
-    const response = await fetch(`https://picsum.photos/${clientW}/${clientH}`); // Use backticks
+    const response = await fetch(`https://picsum.photos/${window.innerWidth}/${window.innerHeight}`); // Use backticks
     const preloadedImage = await preloadImage(response.url);
     imageQueue.push(preloadedImage);
     if (imageQueue.length > 1) {
