@@ -98,4 +98,12 @@ body {
   }
   .crossword .black {
     background-color: black;
+    margin: 1px;
+  }
+  .sudokuTable {
+    width: 3em;
+    height: 3em;
+    align-content: center;
+    color: black;
+    border: 3px solid black;
   }
