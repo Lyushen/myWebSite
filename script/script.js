@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   async function preloadFirstImage() {
     var clientW = window.innerWidth;
     var clientH = window.innerHeight;
-    const response = await fetch('https://picsum.photos/{$clientW}}/{$clientH}');
+    const response = await fetch('https://picsum.photos/${clientW}/${clientH}');
     const preloadedImage = await preloadImage(response.url);
     document.body.style.backgroundImage = `url(${preloadedImage})`;
     document.body.classList.add('loaded');
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   async function updateBackground() {
     var clientW = window.innerWidth;
     var clientH = window.innerHeight;
-    const response = await fetch('https://picsum.photos/{$clientW}}/{$clientH}');
+    const response = await fetch('https://picsum.photos/${clientW}/${clientH}');
     const preloadedImage = await preloadImage(response.url);
     imageQueue.push(preloadedImage);
     if (imageQueue.length > 1) {
