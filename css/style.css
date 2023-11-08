@@ -83,5 +83,18 @@ body {
       float: none;
       display: block;
     }
-
+  }
+  /* Puzzle css */
+  table.crossword, .crossword td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  .crossword td {
+    width: 3em;
+    height: 3em;
+    vertical-align: top;
+    background-color: white;
+  }
+  .crossword .black {
+    background-color: black;
   }
