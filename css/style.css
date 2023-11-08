@@ -105,6 +105,10 @@ body {
     height: 3em;
     align-content: center;
     color: black;
-    border: 3px solid black;
+    border: 5px solid black;
     background-color: white;
+  }
+  .sudokuTable td {
+    border: 1px solid black;
+    border-collapse: collapse;
   }
