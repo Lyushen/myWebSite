@@ -94,6 +94,7 @@ body {
     height: 3em;
     vertical-align: top;
     background-color: white;
+    color: black;
   }
   .crossword .black {
     background-color: black;
