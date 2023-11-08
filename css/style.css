@@ -103,13 +103,14 @@ body {
   table.sudokuTable {
 
     align-content: center;
-    color: black;
+ 
     border: 5px solid black;
     background-color: white;
   }
   .sudokuTable td {
     width: 3em;
     height: 3em;
+    color: black;
     border: 1px solid black;
     border-collapse: collapse;
   }
