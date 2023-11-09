@@ -61,7 +61,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   }
 
-  const navLinks = document.querySelectorAll('.topnav a');
+
+
+  const navLinks = document.querySelectorAll('.navbar a');
   navLinks.forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault();
@@ -85,15 +87,16 @@ document.addEventListener("DOMContentLoaded", async function () {
     xhr.open('GET', url, true);
     xhr.send();
   }
-  function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-  }
-  window.onclick = function(e) {
-    if (!e.target.matches('.dropbtn')) {
-    var myDropdown = document.getElementById("myDropdown");
-      if (myDropdown.classList.contains('show')) {
-        myDropdown.classList.remove('show');
-      }
+
+});
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+  var myDropdown = document.getElementById("myDropdown");
+    if (myDropdown.classList.contains('show')) {
+      myDropdown.classList.remove('show');
     }
   }
-});
+}
