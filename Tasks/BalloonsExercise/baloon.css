@@ -1,17 +1,17 @@
-h1 strong  {
+h1  {
 font-size: 3em; 
 color: #d581ff; 
 font-weight: 400;
 font-family: "Courier New", Courier, monospace; 
 }
-h2 strong {
+h2 {
 color:#d581ff;
 font-style:italic;
 font-size:1.5em;
 font-family:Arial, Helvetica, sans-serif;
 }
     p{       color:#555555;       }
-h3 strong, p strong { 
+h3, p { 
 font-family: Arial, Helvetica, sans-serif;
 color: #d581ff;
 }
