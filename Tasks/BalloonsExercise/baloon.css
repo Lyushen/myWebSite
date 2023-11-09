@@ -1,23 +1,25 @@
 h1 strong  {
-    
-    font-size: 3em; 
-    color: rgb(170, 0, 255); 
-    font-weight: 400;
-    font-family: "Courier New", Courier, monospace; 
-    }
-    h2 strong {
-color:rgb(170, 0, 255);
+font-size: 3em; 
+color: #d581ff; 
+font-weight: 400;
+font-family: "Courier New", Courier, monospace; 
+}
+h2 strong {
+color:#d581ff;
 font-style:italic;
 font-size:1.5em;
 font-family:Arial, Helvetica, sans-serif;
-    }
+}
 /*     p{       color:#555555;       } */
-    h2 strong, p strong { 
-        font-family: Arial, Helvetica, sans-serif;
-        color: #aa00ff;
-
-     }
-     body strong  { 
-        font-family: Arial, Helvetica, sans-serif;
-        color: #555;
-        }
+h2 strong, p strong { 
+font-family: Arial, Helvetica, sans-serif;
+color: #d581ff;
+}
+h3 strong {
+font-family: Arial, Helvetica, sans-serif;
+color: #d581ff;
+}
+body strong  { 
+font-family: Arial, Helvetica, sans-serif;
+color: #555;
+}
