@@ -48,37 +48,10 @@ body {
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 0, 0, 0.9), 0 0 35px rgba(0, 0, 0, 1);
     color: #FFFFFF;
   }
-  .topnav {
-    position: relative;
-    overflow: hidden;
-    background-color: #333;
-  }
   
-  .topnav a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-  }
-  
-  .topnav a:hover {
-    background-color: #00a2ffac;
-    color: black;
-  }
-  
-  .topnav a.active {
-    background-color: #04AA6D;
-    color: white;
-  }
-  
-  .topnav-right {
-    float: right;
-  }
   /* Responsive navigation menu (for mobile devices) */
   @media screen and (max-width: 600px) {
-    .topnav a, .topnav-right {
+    .navbar a {
       float: none;
       display: block;
     }
@@ -125,6 +98,68 @@ body {
     background-color: rgb(255, 255, 255);  
     color: black;
  }
- .sudokuTable tr:hover {
-  color: red;
+/* new nav bar */
+ .navbar {
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  cursor: pointer;
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #aaaaaa;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: rgb(255, 255, 255);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: red;
+}
+
+.show {
+  display: block;
+}
+.navbar-right{
+  float: right;
 }

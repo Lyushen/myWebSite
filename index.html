@@ -9,16 +9,21 @@
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 </head>
 <body>
-  <div class="topnav">
-    <a href="#" class="active" data-page="home.html">Home</a>
+  <div class="navbar">
+    <a href="#" data-page="home.html">Home</a>
     <a href="#" data-page="games.html">My Games</a>
-    <a href="#" data-page="apprenticeship.html">Apprenticeship</a>
-    <!-- We should here add a top bar -->
-    <a href="#" data-page="heroes.html">My Heroes</a>
-    <div class="topnav-right">
-      <a href="#" data-page="puzzle.html">Puzzles</a>
-      <a href="#" data-page="about.html">About</a>
+    <div class="dropdown">
+    <button class="dropbtn" onclick="myFunction()">Apprenticeship</button>
+    <div class="dropdown-content" id="myDropdown">
+      <a href="#">Customer Support Provision</a>
+      <a href="#">Web Development</a>
+      <a href="#">Software Development Fundamentals</a>
     </div>
+  </div> 
+  <div class="navbar-right">
+    <a href="#" data-page="puzzle.html">Puzzles</a>
+    <a href="#" data-page="about.html">About</a>
+  </div>
   </div>
   <div id="content"></div>
 </body>
