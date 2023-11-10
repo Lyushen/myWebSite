@@ -92,9 +92,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
-function myFunction2() {
-  document.getElementById("myDropdown2").classList.toggle("show");
-}
 window.onclick = function(e) {
   if (!e.target.matches('.dropbtn')) {
   var myDropdown = document.getElementById("myDropdown");
