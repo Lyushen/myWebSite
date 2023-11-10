@@ -21,17 +21,32 @@ color: #dc97ff;
     font-style: italic;
 }
 /* actual baloons */
-  
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent scrolling */
+  height: 100%; /* Ensure the body has the full viewport height */
+}
+
 #balloon-container {
-  height: 100vh; /* This limits the container's height to the viewport height */
-  overflow: hidden; /* This prevents scrolling due to any content going beyond the viewport height */
-  position: relative; /* Ensures that absolute positioning is relative to the container */
+  position: fixed; /* Fixed position to make it stay as a background */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1; /* Behind the content */
+  overflow: hidden;
+}
+.content {
+  position: relative; /* Ensures content is positioned correctly within the body */
+  z-index: 1; /* Above the balloons */
+  /* Other styling as required */
 }
   .balloon {
+    position: absolute; /* Positioned relative to #balloon-container */
     height: 125px;
     width: 105px;
     border-radius: 75% 75% 70% 70%;
-    position: absolute;
     bottom: -150px;
   }
   
