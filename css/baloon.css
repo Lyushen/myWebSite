@@ -23,7 +23,6 @@ color: #dc97ff;
 /* actual baloons */
 body {
     margin: 0;
-    
   }
   
   #balloon-container {
@@ -35,7 +34,6 @@ body {
     overflow: hidden;
     transition: opacity 500ms;
   }
-  
   .balloon {
     height: 125px;
     width: 105px;
