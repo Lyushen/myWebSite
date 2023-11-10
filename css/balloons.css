@@ -24,10 +24,9 @@ color: #dc97ff;
 html, body {
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Prevent scrolling */
-  height: 100%; /* Ensure the body has the full viewport height */
+  height: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
-
 #balloon-container {
   position: fixed; /* Fixed position to make it stay as a background */
   top: 0;
