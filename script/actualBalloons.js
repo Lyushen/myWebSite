@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
+  console.log("DOM fully loaded and parsed");
+
   const balloonContainer = document.getElementById("balloon-container");
+  if (!balloonContainer) {
+    console.error("Balloon container not found");
+    return; // Stop the function if the container is not found
+  }
 
   function random(num) {
     return Math.floor(Math.random() * num);
@@ -26,13 +32,14 @@ document.addEventListener("DOMContentLoaded", function() {
     balloon.className = "balloon";
     balloon.style.cssText = getRandomStyles();
     balloonContainer.append(balloon);
+    console.log("Balloon created");
 
-    // Remove the balloon after it finishes its animation to prevent a memory leak
     balloon.addEventListener('animationend', function() {
       balloon.remove();
+      console.log("Balloon removed");
     });
   }
 
-  // Create a new balloon at regular intervals
-  setInterval(createBalloon, 500); // Adjust the interval as needed
+  setInterval(createBalloon, 500); // Creates a balloon every 500ms
+  console.log("Balloon creation interval set");
 });
