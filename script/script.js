@@ -38,8 +38,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   }
 
-  // Update background every 3000ms
-  setInterval(updateBackground, 3000);
+  // Update background every 5 seconds (5000ms)
+  setInterval(updateBackground, 5000);
 
   async function loadPage(url) {
     if (pageCache[url]) {
