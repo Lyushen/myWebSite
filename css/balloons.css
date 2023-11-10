@@ -22,15 +22,15 @@ color: #dc97ff;
 }
 /* actual baloons */
   
-#balloon-container {
+/* #balloon-container {
   height: 100vh;
-  padding: 0; /* Adjusted to remove padding which might cause overflow */
+  padding: 0; /* Adjusted to remove padding which might cause overflow * /
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
-  overflow: hidden; /* Prevents balloons from causing the container to scroll */
+  overflow: hidden; /* Prevents balloons from causing the container to scroll * /
   transition: opacity 500ms;
-}
+} */
   .balloon {
     height: 125px;
     width: 105px;
