@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
-  console.log("DOM fully loaded and parsed");
-
   const balloonContainer = document.getElementById("balloon-container");
+
   if (!balloonContainer) {
-    console.error("Balloon container not found");
+    console.error("Balloon container not found. Make sure the element exists and the ID is correct.");
     return; // Stop the function if the container is not found
   }
 
