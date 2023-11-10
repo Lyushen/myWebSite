@@ -22,20 +22,17 @@ color: #dc97ff;
 }
 /* actual baloons */
   
-/* #balloon-container {
-  height: 100vh;
-  padding: 0; /* Adjusted to remove padding which might cause overflow * /
-  box-sizing: border-box;
-  display: flex;
-  flex-wrap: wrap;
-  overflow: hidden; /* Prevents balloons from causing the container to scroll * /
-  transition: opacity 500ms;
-} */
+#balloon-container {
+  height: 100vh; /* This limits the container's height to the viewport height */
+  overflow: hidden; /* This prevents scrolling due to any content going beyond the viewport height */
+  position: relative; /* Ensures that absolute positioning is relative to the container */
+}
   .balloon {
     height: 125px;
     width: 105px;
     border-radius: 75% 75% 70% 70%;
-    position: relative;
+    position: absolute;
+    bottom: -150px;
   }
   
   .balloon:before {
@@ -65,8 +62,12 @@ color: #dc97ff;
   }
   
   @keyframes float {
-    from {transform: translateY(100vh);
-    opacity: 1;}
-    to {transform: translateY(-300vh);
-    opacity: 0;}
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-100vh); /* End the animation at the top of the viewport */
+      opacity: 0;
+    }
   }
