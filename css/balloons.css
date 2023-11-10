@@ -21,9 +21,6 @@ color: #dc97ff;
     font-style: italic;
 }
 /* actual baloons */
-html, body {
-  margin: 0;
-}
   
 #balloon-container {
   height: 100vh;
