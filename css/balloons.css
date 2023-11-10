@@ -22,9 +22,8 @@ color: #dc97ff;
 }
 /* actual baloons */
 html, body {
-  height: 100%;
   margin: 0;
-  overflow: hidden; /* Prevent scrolling on the entire document */
+/*   overflow: hidden; Prevent scrolling on the entire document */
 }
   
 #balloon-container {
