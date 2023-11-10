@@ -100,7 +100,7 @@ body {
  }
 /* new nav bar */
  .navbar {
-  border-radius: 4px;
+  border-radius: 7px;
   overflow: hidden;
   background-color: #333;
   font-family: Arial, Helvetica, sans-serif;

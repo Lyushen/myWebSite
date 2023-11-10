@@ -23,7 +23,6 @@ color: #dc97ff;
 /* actual baloons */
 html, body {
   margin: 0;
-/*   overflow: hidden; Prevent scrolling on the entire document */
 }
   
 #balloon-container {
