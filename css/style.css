@@ -1,154 +1,113 @@
-/* https://color.adobe.com/create/color-wheel */
-/* https://coolors.co/ */
-@import url('https://fonts.cdnfonts.com/css/friz-quadrata');
+@import url('font/Friz Quadrata Regular.ttf');
+
 body {
   font-family: 'Friz Quadrata', sans-serif;
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-  body.loaded {
-    transform: translateZ(0);
-    transition: background-image 0.5s ease-in-out;
-  }
-  #image-wrapper {
-    position: relative;
-    width: 800px;
-  }
-  #dynamic-image {
-    position: absolute;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    width: 800px;
-  }
-  #content {
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-  }
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-  
-  #content.loading {
-    opacity: 0;
-    transition: opacity 0.5s ease;
-  }
-  
-  #content.loaded {
-    opacity: 1;
-    transition: opacity 0.5s ease;
-  }
+body.loaded {
+  transform: translateZ(0);
+  transition: background-image 0.5s ease-in-out;
+}
 
+#image-wrapper {
+  position: relative;
+  width: 800px;
+}
 
-  #dynamic_iframe {
-    transition: opacity 1s ease-in-out;
-    opacity: 0;
+#dynamic-image,
+#content,
+#dynamic_iframe {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  width: 800px; /* Only applicable for #dynamic-image */
+}
+
+#content.loaded,
+.loaded #dynamic_iframe {
+  opacity: 1;
+}
+
+* {
+  text-shadow: 0 0 35px rgba(0, 0, 0, 1);
+  color: #FFFFFF;
+}
+
+/* Responsive navigation menu (for mobile devices) */
+@media screen and (max-width: 600px) {
+  .navbar a {
+    float: none;
+    display: block;
   }
-  .loaded #dynamic_iframe {
-    opacity: 1;
-  }
-    
-  * {
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 0, 0, 0.9), 0 0 35px rgba(0, 0, 0, 1);
-    color: #FFFFFF;
-  }
-  
-  /* Responsive navigation menu (for mobile devices) */
-  @media screen and (max-width: 600px) {
-    .navbar a {
-      float: none;
-      display: block;
-    }
-  }
-  /* Puzzle css */
-  table.crossword, .crossword td {
-    border: 1px solid black;
-    border-collapse: collapse;
-  }
-  .crossword td {
-    width: 3em;
-    height: 3em;
-    vertical-align: top;
-    background-color: white;
-    color: black;
-  }
-  .crossword .black {
-    background-color: black;
-    margin: 1px;
-  }
-  /* Sudoku table */
- .sudokuTable table {
-    border: 3px solid black;
-    border-collapse: collapse;
-    text-align: center;
-    background-color: white;
-  }
-  .sudokuTable td {
-    width: 3em;
-    height: 3em;
-    align-content: center;
-    color: rgb(255, 0, 0);
-    border: 1px solid black;
-  }
-  .sudokuTable td:nth-child(3n)
-  {
-    border-right: 2px solid black;
-  }
-  .sudokuTable tr:nth-child(3n)
-  {
+}
+
+/* Puzzle CSS */
+table.crossword,
+.crossword td,
+.sudokuTable table,
+.sudokuTable td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.crossword td,
+.sudokuTable td {
+  width: 3em;
+  height: 3em;
+  vertical-align: top;
+  color: black;
+}
+
+.crossword .black,
+.blackCells {
+  background-color: black;
+}
+
+.sudokuTable td:nth-child(3n),
+.sudokuTable tr:nth-child(3n) td {
+  border-right: 2px solid black;
+}
+
+.sudokuTable tr:nth-child(3n) {
   border-bottom: 2px solid black;
-  }
-  .blackCells  {
-    background-color: rgb(255, 255, 255);  
-    color: black;
- }
-/* new nav bar */
- .navbar {
+}
+
+/* Navbar */
+.navbar {
   border-radius: 7px;
   overflow: hidden;
   background-color: #333;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.navbar a {
+.navbar a,
+.dropdown .dropbtn {
   float: left;
   font-size: 16px;
   color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  background-color: inherit;
+  margin: 0;
+}
+
+.navbar a:hover,
+.dropdown:hover .dropbtn,
+.dropdown-content a:hover {
+  background-color: red;
 }
 
 .dropdown {
-/*   float: left;
-  overflow: hidden; */
   position: relative;
   display: inline-block;
 }
 
-.dropdown .dropbtn {
-  cursor: pointer;
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: red;
-  display: block;
-}
-
 .dropdown-content {
-/*   display: none;
-  position: absolute;
-  background-color: #333;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1; */
   display: none;
   position: absolute;
   background-color: #f9f9f9;
@@ -159,24 +118,21 @@ body {
 }
 
 .dropdown-content a {
-  float: none;
-  color: rgb(255, 255, 255);
+  color: #333;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
   text-align: left;
 }
 
-.dropdown-content a:hover {
-  background-color: red;
-}
-
 .show {
   display: block;
 }
-.navbar-right{
+
+.navbar-right {
   float: right;
 }
+
 .navbar a.active {
   background-color: #04AA6D;
   color: white;
