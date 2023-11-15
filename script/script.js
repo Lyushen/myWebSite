@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 });
 function myFunction(dropDownName) {
-  document.getElementById(dropDownName).classList.toggle("show");
+  document.getElementById(String(dropDownName)).classList.toggle("show");
 }
 window.onclick = function(e) {
   if (!e.target.matches('.dropbtn')) {
