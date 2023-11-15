@@ -132,7 +132,7 @@ body {
   margin: 0;
 }
 
-.navbar a:hover .dropdown:hover .dropbtn .dropbtn2{
+.navbar, a:hover .dropdown:hover .dropbtn, a:hover .dropdown:hover .dropbtn2{
   background-color: red;
 }
 
