@@ -120,7 +120,18 @@ body {
   overflow: hidden;
 }
 
-.dropdown .dropbtn, .dropdown .dropbtn2 {
+.dropdown .dropbtn {
+  cursor: pointer;
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+.dropdown .dropbtn2 {
   cursor: pointer;
   font-size: 16px;  
   border: none;
@@ -132,10 +143,12 @@ body {
   margin: 0;
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn, .dropdown:hover .dropbtn2 {
+.navbar a:hover, .dropdown:hover .dropbtn {
   background-color: red;
 }
-
+.navbar a:hover, .dropdown:hover .dropbtn2 {
+  background-color: red;
+}
 .dropdown-content {
   display: none;
   position: absolute;
