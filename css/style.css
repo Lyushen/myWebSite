@@ -1,7 +1,8 @@
 /* https://color.adobe.com/create/color-wheel */
 /* https://coolors.co/ */
+@import url('https://fonts.cdnfonts.com/css/friz-quadrata');
 body {
-  font-family: sans-serif;
+  font-family: 'Friz Quadrata', sans-serif;
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
