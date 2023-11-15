@@ -8,7 +8,7 @@
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   <meta charset="utf-8"/>
   <link type="text/css" rel="stylesheet" href="css/style.css"/>
-  <!-- <script src="script/script.js" defer></script> -->
+  <script src="script/script.js" defer></script>
 
 </head>
 <body>
@@ -16,18 +16,25 @@
     <a href="#" class="active" data-page="home.html">Home</a>
     <a href="#" data-page="games.html">My Games</a>
     <div class="dropdown">
-    <button class="dropbtn" onclick="myFunction()">Apprenticeship</button>
-    <div class="dropdown-content" id="myDropdown">
-      <a href="#">Customer Support Provision</a>
-      <a href="#">Web Development</a>
-      <a href="#">Software Development Fundamentals</a>
+      <button class="dropbtn" onclick="myFunction()">Apprenticeship</button>
+      <div class="dropdown-content" id="myDropdown">
+        <a href="#">Customer Support Provision</a>
+        <a href="#">Web Development</a>
+        <a href="#">Software Development Fundamentals</a>
+      </div>
+    </div> 
+    <div class="dropdown">
+      <button class="dropbtn" onclick="myFunction()">Balloons</button>
+      <div class="dropdown-content" id="myDropdown">
+        <a href="#" data-page="Balloons/home.html">Home</a>
+        <a href="#" data-page="Balloons/services.html"></a>>Services</a>
+        <a href="#">Some other page</a>
+      </div>
+    </div> 
+    <div class="navbar-right">
+      <a href="#" data-page="puzzle.html">Puzzles</a>
+      <a href="#" data-page="about.html">About</a>
     </div>
-  </div> 
-  <div class="navbar-right">
-    <a href="#" data-page="balloons.html">Balloons</a>
-    <a href="#" data-page="puzzle.html">Puzzles</a>
-    <a href="#" data-page="about.html">About</a>
-  </div>
   </div>
   <div id="content"></div>
 </body>
