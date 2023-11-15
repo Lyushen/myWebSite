@@ -120,7 +120,7 @@ body {
   overflow: hidden;
 }
 
-.dropdown .dropbtn .dropbtn2 {
+.dropdown .dropbtn, .dropdown .dropbtn2 {
   cursor: pointer;
   font-size: 16px;  
   border: none;
@@ -132,7 +132,7 @@ body {
   margin: 0;
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn .dropbtn2 {
+.navbar a:hover, .dropdown:hover .dropbtn, .dropdown:hover .dropbtn2 {
   background-color: red;
 }
 
