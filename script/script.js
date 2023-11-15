@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
 });
-function myFunction(dropDownName) {
+function openMenu(dropDownName) {
   document.getElementById(String(dropDownName)).classList.toggle("show");
 }
 window.onclick = function(e) {
