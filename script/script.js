@@ -3,9 +3,12 @@ document.addEventListener("DOMContentLoaded", async function () {
   const pageCache = {};
 
   async function preloadFirstImage() {
-    const response = await fetch(`https://picsum.photos/${window.innerWidth}/${window.innerHeight}`); // Use backticks
+    // Fetch an image twice the size of the screen dimensions
+    const response = await fetch(`https://picsum.photos/${window.innerWidth * 2}/${window.innerHeight * 2}`);
     const preloadedImage = await preloadImage(response.url);
+    // Use CSS to fit the image to the screen size
     document.body.style.backgroundImage = `url(${preloadedImage})`;
+    document.body.style.backgroundSize = 'cover';
     document.body.classList.add('loaded');
   }
 
@@ -30,11 +33,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   // Function for background rotation
   async function updateBackground() {
-    const response = await fetch(`https://picsum.photos/${window.innerWidth}/${window.innerHeight}`); // Use backticks
+    // Fetch an image twice the size of the screen dimensions
+    const response = await fetch(`https://picsum.photos/${window.innerWidth * 2}/${window.innerHeight * 2}`);
     const preloadedImage = await preloadImage(response.url);
     imageQueue.push(preloadedImage);
     if (imageQueue.length > 1) {
+      // Use CSS to fit the image to the screen size
       document.body.style.backgroundImage = `url(${imageQueue.shift()})`;
+      document.body.style.backgroundSize = 'cover';
     }
   }
 

@@ -1,98 +1,128 @@
 h1  {
-font-size: 3em; 
-color: #c144ff; 
-font-weight: 400;
-font-family: "Courier New", Courier, monospace; 
-border: 1px solid #4c0072;
-}
-h1  {
-background-color: #c775f0
-}
-h1 {
-  padding: 0.5em;
-}
-h2 {
-color:#c757ff;
-font-style:italic;
-font-size:1.5em;
-font-family:Arial, Helvetica, sans-serif;
-}
-p{       color:rgb(187, 187, 187);       }
-h3 { 
-font-family: Arial, Helvetica, sans-serif;
-color: #dc97ff;
-}
-.intoduction{
-    font-size: 1.5em;
-    color: #8a70ff;
-    font-style: italic;
-}
-/* actual baloons */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-}
-#balloon-container {
-  position: fixed; /* Fixed position to make it stay as a background */
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1; /* Behind the content */
-  overflow: hidden;
-}
-.content {
-  /* position: relative; Ensures content is positioned correctly within the body */
-  z-index: 1; /* Above the balloons */
-  /* Other styling as required */
-}
-  .balloon {
-    position: absolute; /* Positioned relative to #balloon-container */
-    height: 125px;
-    width: 105px;
-    border-radius: 75% 75% 70% 70%;
-    bottom: -150px;
+  font-size: 3em; 
+  color: #c144ff; 
+  font-weight: 400;
+  font-family: "Courier New", Courier, monospace; 
+  border: 1px solid #4c0072;
   }
-  
-  .balloon:before {
-    content: "";
-    height: 75px;
-    width: 1px;
-    padding: 1px;
-    background-color: #FDFD96;
-    display: block;
-    position: absolute;
-    top: 125px;
+  h1 {
+    border: 1px solid #4c0072;
+    background-color: #f0e6f5;
+    padding: 0.5em;
+  }
+  h2 {
+  color:#c757ff;
+  font-style:italic;
+  font-size:1.5em;
+  font-family:Arial, Helvetica, sans-serif;
+  }
+  h2 {
+    background-color: #f0e6f5;
+    padding: 0.25em 0.5em; /* top and bottom padding 0.25em, left and right padding 0.5em */
+  }
+  p{       color:rgb(187, 187, 187);       }
+  h3 { 
+  font-family: Arial, Helvetica, sans-serif;
+  color: #dc97ff;
+  }
+  h3 {
+    border-bottom: 1px solid; /* Color will inherit from the element's color property */
+    padding-bottom: 0.25em;
+  }
+  .intoduction{
+      font-size: 1.5em;
+      color: #8a70ff;
+      font-style: italic;
+  }
+  /* actual baloons */
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+  #balloon-container {
+    position: fixed; /* Fixed position to make it stay as a background */
+    top: 0;
     left: 0;
     right: 0;
-    margin: auto;
+    bottom: 0;
+    z-index: -1; /* Behind the content */
+    overflow: hidden;
   }
-  
-  .balloon:after {
-      content: "▲";
-      text-align: center;
+  .content {
+    /* position: relative; Ensures content is positioned correctly within the body */
+    z-index: 1; /* Above the balloons */
+    /* Other styling as required */
+  }
+    .balloon {
+      position: absolute; /* Positioned relative to #balloon-container */
+      height: 125px;
+      width: 105px;
+      border-radius: 75% 75% 70% 70%;
+      bottom: -150px;
+    }
+    
+    .balloon:before {
+      content: "";
+      height: 75px;
+      width: 1px;
+      padding: 1px;
+      background-color: #FDFD96;
       display: block;
       position: absolute;
-      color: inherit;
-      top: 120px;
+      top: 125px;
       left: 0;
       right: 0;
       margin: auto;
+    }
+    
+    .balloon:after {
+        content: "▲";
+        text-align: center;
+        display: block;
+        position: absolute;
+        color: inherit;
+        top: 120px;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+    
+    @keyframes float {
+      from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-100vh); /* End the animation at the top of the viewport */
+        opacity: 0;
+      }
+    }
+    .navigation {list-style-type: none;
+      margin:0;
+      padding:0;
+    }
+  
+    /* Style for all elements with class "highlight" */
+  .highlight {
+    color: #ff6600; /* This will set the text color to orange for all elements with the 'highlight' class */
   }
   
-  @keyframes float {
-    from {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    to {
-      transform: translateY(-100vh); /* End the animation at the top of the viewport */
-      opacity: 0;
-    }
+  /* Specific style for p elements with class "highlight" */
+  p.highlight {
+    font-weight: bold; /* This will make the text bold for p elements with the 'highlight' class */
   }
-  .navigation {list-style-type: none;
-    margin:0;
-    padding:0;
+  
+  /* Specific style for h1 elements with class "highlight" */
+  h1.highlight {
+    text-transform: uppercase; /* This will set the text to uppercase for h1 elements with the 'highlight' class */
   }
+  
+  /* Style for elements with class "special" */
+  .special {
+    font-size: 2em; /* This will set the font size to twice the default size */
+    color: #00aa00; /* This will set the text color to a green shade */
+    font-style: italic; /* This will italicize the text */
+  }
+  
