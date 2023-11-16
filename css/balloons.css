@@ -3,6 +3,13 @@ font-size: 3em;
 color: #c144ff; 
 font-weight: 400;
 font-family: "Courier New", Courier, monospace; 
+border: 1px solid #4c0072;
+}
+h1  {
+background-color: #c775f0
+}
+h1 {
+  padding: 0.5em;
 }
 h2 {
 color:#c757ff;
@@ -84,4 +91,8 @@ html, body {
       transform: translateY(-100vh); /* End the animation at the top of the viewport */
       opacity: 0;
     }
+  }
+  .navigation {list-style-type: none;
+    margin:0;
+    padding:0;
   }
