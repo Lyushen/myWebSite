@@ -44,7 +44,7 @@ html, body {
   overflow: hidden;
 }
 .content {
-  position: relative; /* Ensures content is positioned correctly within the body */
+  /* position: relative; Ensures content is positioned correctly within the body */
   z-index: 1; /* Above the balloons */
   /* Other styling as required */
 }
