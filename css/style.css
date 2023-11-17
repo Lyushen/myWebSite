@@ -212,3 +212,36 @@ body {
   font-size: 10px;
   padding-left: 5px;
 }
+
+/* forms */
+input{
+  color: black;
+}
+label, input, textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+form {
+width: 30em;
+}
+.form-control {
+margin-bottom: 1em;
+}
+textarea {
+min-height: 5em;
+}
+.form-control input,
+.form-control textarea {
+padding: 0.5em;}
+input[type="checkbox"] {
+display: inline-block;
+width: auto; /* Override the width: 100%; rule */
+margin-right: 0.5em; /* Add some space between the checkbox and the label */
+}
+
+.checkbox label {
+display: inline-block; /* This will align the label next to the checkbox */
+width: auto; /* Override the width: 100%; rule */
+}
+        

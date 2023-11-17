@@ -1,0 +1,35 @@
+<html lang="en">
+    <head>
+        <title>Contact Us - Balloons Ltd.</title>
+    </head>
+<body>
+    <h1>Contact Form</h1>
+    <p>Please fill-up the form. Required market by asterisk (<span style="color: red;">*</span>)</p>
+<form action="">
+    <div class="fullName">
+        <label for="fullname">Your full name <span style="color: red;">*</span></label>
+        <input required id="fullname" type="text" name="fullname" />
+    </div>
+    <br>
+    <div class="email">
+        <label for="email">Your email address <span style="color: red;">*</span></label>
+        <input required id="email" type="email" name="email_address" />
+    </div>
+    <br>
+    <div class="age">
+        <label for="age">Your age</Label>
+        <input type="number" name="age" id="age“ min="1" max="150">
+    </div>
+    <br>
+    <div class="request">
+        <label for="request">Your request</Label>
+        <textarea id="request" name="request"></textarea></div>
+    <br>
+    <div class="checkbox">
+    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+    <label for="vehicle1">I have a bike</label></div>
+    <br>
+    <input type="submit" value="Submit" />
+    </form>
+</body>
+</html>
