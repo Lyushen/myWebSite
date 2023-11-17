@@ -1,23 +1,21 @@
-document.addEventListener("DOMContentLoaded", async function () {
+document.addEventListener("DOMContentLoaded", function () {
   const imageQueue = [];
   const pageCache = {};
 
-  async function preloadFirstImage() {
-    // Fetch an image twice the size of the screen dimensions
-    const response = await fetch(`https://picsum.photos/${window.innerWidth * 2}/${window.innerHeight * 2}`);
-    const preloadedImage = await preloadImage(response.url);
-    // Use CSS to fit the image to the screen size
-    document.body.style.backgroundImage = `url(${preloadedImage})`;
-    document.body.style.backgroundSize = 'cover';
-    document.body.classList.add('loaded');
+  function preloadFirstImage() {
+    fetch(`https://picsum.photos/${window.innerWidth}/${window.innerHeight}`)
+      .then(response => preloadImage(response.url))
+      .then(preloadedImage => {
+        document.body.style.backgroundImage = `url(${preloadedImage})`;
+        document.body.style.backgroundSize = 'cover';
+        document.body.classList.add('loaded');
+      });
   }
 
-  
-  async function preloadFirstPage() {
-    await loadPage('home.html');
+  function preloadFirstPage() {
+    loadPage('home.html');
   }
 
-  // Function to preload image
   function preloadImage(url) {
     return new Promise((resolve) => {
       const img = new Image();
@@ -28,38 +26,32 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
   }
 
-  await preloadFirstImage();
-  await preloadFirstPage();
+  preloadFirstImage();
+  preloadFirstPage();
 
-  // Function for background rotation
-  async function updateBackground() {
-    // Fetch an image twice the size of the screen dimensions
-    const response = await fetch(`https://picsum.photos/${window.innerWidth * 2}/${window.innerHeight * 2}`);
-    const preloadedImage = await preloadImage(response.url);
-    imageQueue.push(preloadedImage);
-    if (imageQueue.length > 1) {
-      // Use CSS to fit the image to the screen size
-      document.body.style.backgroundImage = `url(${imageQueue.shift()})`;
-      document.body.style.backgroundSize = 'cover';
-    }
+  function updateBackground() {
+    fetch(`https://picsum.photos/${window.innerWidth * 2}/${window.innerHeight * 2}`)
+      .then(response => preloadImage(response.url))
+      .then(preloadedImage => {
+        imageQueue.push(preloadedImage);
+        if (imageQueue.length > 1) {
+          document.body.style.backgroundImage = `url(${imageQueue.shift()})`;
+          document.body.style.backgroundSize = 'cover';
+        }
+      });
   }
 
-  // Update background every 5 seconds (5000ms)
   setInterval(updateBackground, 5000);
 
-  async function loadPage(url) {
+  function loadPage(url) {
     if (pageCache[url]) {
-      const content = document.getElementById('content');
-      content.innerHTML = pageCache[url];
-      content.classList.add('loaded');
+      displayContent(pageCache[url]);
     } else {
       const xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
           pageCache[url] = xhr.responseText;
-          const content = document.getElementById('content');
-          content.innerHTML = xhr.responseText;
-          content.classList.add('loaded');
+          displayContent(xhr.responseText);
         }
       };
       xhr.open('GET', url, true);
@@ -67,15 +59,18 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   }
 
+  function displayContent(html) {
+    const content = document.getElementById('content');
+    content.innerHTML = html;
+    content.classList.add('loaded');
+  }
 
-
-  const navLinks = document.querySelectorAll('.navbar a');
-  navLinks.forEach(link => {
+  document.querySelectorAll('.navbar a').forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault();
       loadPage(this.getAttribute('data-page'));
     });
-    link.addEventListener('mouseover', function (e) {
+    link.addEventListener('mouseover', function () {
       const url = this.getAttribute('data-page');
       if (!pageCache[url]) {
         preloadPage(url);
@@ -93,5 +88,4 @@ document.addEventListener("DOMContentLoaded", async function () {
     xhr.open('GET', url, true);
     xhr.send();
   }
-
 });
