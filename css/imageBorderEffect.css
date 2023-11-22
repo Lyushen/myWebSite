@@ -1,0 +1,76 @@
+.container-image-border {
+    position: relative;
+    display: inline-block; /* or block, depending on layout */
+    margin: 2rem;
+    overflow: hidden; /* keeps pseudo-elements within the container */
+  }
+  
+  .container-image-border img {
+    display: block;
+    width: 100%;
+    height: auto; /* maintain aspect ratio */
+    transition: transform 0.4s ease; /* optional: scale effect on hover */
+  }
+  
+  .container-image-border:before,
+  .container-image-border:after,
+  .inner-block:before,
+  .inner-block:after {
+    content: '';
+    position: absolute;
+    background-color: #fff;
+    transition: all 0.4s ease;
+  }
+  
+  /* Top line */
+  .container-image-border:before {
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+  }
+  
+  /* Right line */
+  .container-image-border:after {
+    top: 0;
+    right: 0;
+    width: 4px;
+    height: 0;
+  }
+  
+  /* Bottom line */
+  .inner-block:before {
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+  }
+  
+  /* Left line */
+  .inner-block:after {
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    height: 0;
+  }
+  
+  .container-image-border:hover:before {
+    width: 100%; /* animates top line */
+  }
+  
+  .container-image-border:hover:after {
+    height: 100%; /* animates right line */
+  }
+  
+  .container-image-border:hover .inner-block:before {
+    width: 100%; /* animates bottom line */
+  }
+  
+  .container-image-border:hover .inner-block:after {
+    height: 100%; /* animates left line */
+  }
+  
+  /* Optional: Scale image on hover */
+  .container-image-border:hover img {
+    transform: scale(1.05);
+  }
