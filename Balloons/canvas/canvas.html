@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Canvas Demo</title>
+        <link rel="stylesheet" href="canvas.css" />
+    </head>
+    <body>
+        <h1>Drawing on Canvas</h1>
+
+        <!-- 
+            We give the canvas an ID so we can select it in JS (and CSS)
+            We also define width and height of the canvas (like we do with images) 
+        -->
+        <canvas id="myCanvas" width="300" height="300"></canvas>
+
+        <h2>Overview</h2>
+        <ul>
+            <li>When drawing on the canvas, we specify the position of the thing we are drawing with x and y coordinates.
+                <ul>
+                    <li>The top left corner of the canvas has the coordinates: x=0, y=0</li>
+                    <li>The top right corner of the canvas has the coordinates: x=WIDTHOFCANVAS, y=0</li>
+                    <li>The bottom left corner of the canvas has the coordinates: x=0, y=HEIGHTOFCANVAS</li>
+                    <li>The bottom right corner of the canvas has the coordinates: x=WIDTHOFCANVAS, y=HEIGHTOFCANVAS</li>
+                </ul> 
+            <li>We draw squares and rectangles with the <b>fillRect</b> method, which takes 4 arguments:
+                <ul>
+                    <li>X coordinate of <i>top left</i> corner of the rectangle</li>
+                    <li>Y coordinate of <i>top left</i> corner of the rectangle</li>
+                    <li>Width of the rectangle</li>
+                    <li>Height of the rectangle</li>
+                </ul>
+            </li>
+            <li>To draw more complex shapes (circles, triangles, etc.) we use <b>paths</b>. If you have ever worked with <i>Vector Graphics</i>, the concepts are very similar.</li>
+        </ul>
+
+        <h2>Useful links</h2>
+        <p>Resources related to the HTML5 canvas element:</p>
+        <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas" target="_blank">The canvas element on MDN</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial" target="_blank">MDN Tutorial</a></li>
+            <li><a href="https://www.w3schools.com/graphics/canvas_intro.asp" target="_blank">W3 Schools Tutorial</a></li>
+            <li><a href="http://tutorials.jenkov.com/html5-canvas/index.html" target="_blank">HTML5 Canvas Tutorial</a> (lots of examples)</li>
+        </ul>
+
+        <script>
+            const canvas = document.getElementById('myCanvas');
+
+            // We need a "context" to draw in, 2d is for all 2 dimensional drawings
+            // The context object has methods and properties that do the actual drawing
+            const context = canvas.getContext('2d');
+
+            // Set fill colour of shape(s) we are about to draw
+            // We can use the same colour values we use in CSS (Hexadecimal, RGB, named colours, etc.)
+            // Every filled shape we draw after this will use this colour (until we change it)
+            context.fillStyle = 'indigo';
+
+            // To draw a rectangle filled with a solid colour in the top left corner...
+            // coords: x=0 and y=0, width=50px, height=50px
+            // The rectangle will be filled with whatever colour is currently set as the fillStyle
+            context.fillRect(0, 0, 50, 50);
+
+            // To draw a rectangle filled with a solid colour in the top right corner...
+            // coords: x=250 and y=0, width=50px, height=50px
+            // Why x=250? WIDTHOFCANVAS - WIDTHOFRECTANGLE = POSITION OF TOP LEFT CORNER OF RECTANGLE
+            context.fillRect(250, 0, 50, 50);
+
+            // To draw a rectangle filled with a solid colour in the bottom left corner...
+            // coords: x=0 and y=250, width=50px, height=50px
+            // Why y=250? HEIGHTOFCANVAS - HEIGHTOFRECTANGLE = POSITION OF TOP LEFT CORNER OF RECTANGLE
+            context.fillRect(0, 250, 50, 50);
+
+            // To draw a rectangle filled with a solid colour in the bottom right corner...
+            // coords: x=250 and y=250, width=50px, height=50px
+            context.fillRect(250, 250, 50, 50);
+
+            // Change the colour we are drawing in
+            // Every filled shape we draw after this will use this colour (until we change it)
+            context.fillStyle = 'lightslategray';
+
+            // To draw a rectangle filled with a solid colour in the middle of the canvas...
+            // coords: x=75 and y=75, width=150px, height=150px
+            // Why x=75? (CANVASWIDTH - WIDTHOFRECTANGLE) / 2
+            // Why y=75? (CANVASHEIGHT - HEIGHTOFRECTANGLE) / 2
+            context.fillRect(75, 75, 150, 150);
+
+            // To draw a circle filled with a solid colour and with a border in the middle of the screen
+            // coords: x=150 and y=150, circle will have radius of 50px
+            // For arcs/circles, the coordinates specify the center of the circle
+            // x=150 and y=150 is right in the middle of the canvas
+            context.beginPath(); // start a path
+            context.arc(150, 150, 50, 0, 2 * Math.PI, false); // Draw the circle
+            context.fillStyle = 'darkorange'; // Specify the fill colour
+            context.fill(); // Fill the circle
+            context.lineWidth = 5; // Specify the border (stroke) width
+            context.strokeStyle = 'indigo'; // Specify the border (stroke) colour
+            context.stroke(); // Draw the border (stroke) on the circle
+            context.closePath(); // End the path
+
+        </script>
+    </body>
+</html>

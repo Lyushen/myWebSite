@@ -1,0 +1,9 @@
+HTML Canvas: https://www.w3schools.com/html/html5_canvas.asp
+Canvas Drawing Images: https://www.youtube.com/watch?v=_BVDaS_ycNE
+HTML Graphics including SVG & HTML Canvas Tutorial: https://www.w3schools.com/graphics/default.asp
+
+HTML Canvas Reference: https://www.w3schools.com/graphics/canvas_reference.asp
+MDN Canvas API: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
+
+Why use Canvas instead of <img>: https://stackoverflow.com/questions/53671213/whats-the-difference-between-using-img-and-canvas-for-drawing-images
+WEBGL (Web Graphics Library) Samples: https://webglsamples.org/
