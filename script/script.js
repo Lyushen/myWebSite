@@ -46,18 +46,38 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadPage(url) {
     if (pageCache[url]) {
       displayContent(pageCache[url]);
+      executeScripts(pageCache[url]);
     } else {
       const xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
           pageCache[url] = xhr.responseText;
           displayContent(xhr.responseText);
+          executeScripts(xhr.responseText);
         }
       };
       xhr.open('GET', url, true);
       xhr.send();
     }
   }
+
+function executeScripts(html, url) {
+  const scriptTags = html.match(/<script(.*?)>([\s\S]*?)<\/script>/g);
+  if (scriptTags) {
+    scriptTags.forEach((scriptTag) => {
+      const scriptContent = scriptTag.replace(/<script(.*?)>([\s\S]*?)<\/script>/, '$2');
+      if (scriptTag.includes('src')) {
+        // Connected script, load it dynamically
+        const script = document.createElement('script');
+        script.src = scriptTag.match(/src=["'](.*?)["']/)[1];
+        document.head.appendChild(script);
+      } else {
+        // Inline script, evaluate it
+        eval(scriptContent);
+      }
+    });
+  }
+}
 
   function displayContent(html) {
     const content = document.getElementById('content');

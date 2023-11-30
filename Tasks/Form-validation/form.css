@@ -1,0 +1,35 @@
+body {
+    font-family: sans-serif;
+    background-color: #333;
+}
+
+.page-container {
+    width: 50%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 2em;
+}
+
+textarea {
+    min-height: 10em;
+}
+
+label, input, textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-control {
+    margin-bottom: 1em;
+}
+
+.form-control input,
+.form-control textarea {
+    padding: 0.5em;
+}
+
+.field-error {
+    color: red;
+    font-weight: bold;
+}

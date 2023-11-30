@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta charset="utf-8" />
+        <title>Form Validation</title>
+        <link rel="stylesheet" href="./form.css" />
+    </head>
+    <body>
+
+        <div class="page-container">
+
+            <h1>Form Validation</h1>
+
+            <form id="myForm" action="" novalidate>
+
+                <div class="form-control">
+                    <label for="fullName">Your full name</label>
+                    <input required id="fullName" type="text" name="full_name" />
+                    <div class="field-error"></div>
+                </div>
+
+                <div class="form-control">
+                    <label for="emailAddress">Your email</label>
+                    <input required id="emailAddress" type="email" name="email_address" />
+                    <div class="field-error"></div>
+                </div>
+
+                <input type="submit" value="Go!" />
+
+            </form>
+        </div>
+        <script src="form.js"></script>
+    </body>
+</html>

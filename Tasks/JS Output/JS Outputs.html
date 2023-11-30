@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!-- saved from url=(0090)https://tallaght.etbonline.ie/pluginfile.php/172507/mod_resource/content/9/js_outputs.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Outputs</title>
+    <style>
+        ol {
+        font-size: 1em;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        background: #f99;
+        padding: 20px;
+        }
+
+        ol li{
+            background: #ffe5e5;
+            color: darkred;
+            margin: 10px;
+            padding: 20px;
+        }
+        
+        #demo{
+            font-weight: bold;
+        }
+        .button {
+            background-color: #ffe5e5;
+            border: none;
+            color: darkred;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 4px 2px;
+            }
+
+      </style>
+</head>
+<body>
+<h1>Javascript</h1>
+<p>JavaScript can "display" data in different ways:</p>
+    <ol>
+        <li>Writing into an alert box, using window.alert() ...<strong>You just clicked OK</strong></li>
+        <li>Writing into an HTML element, using innerHTML</li>
+        <li id="demo">*** No. 2 replaced the innerHTML that was here ***</li>
+        <li>Writing into the browser console, using console.log() - <strong>check your console: Shift+Ctrl+J, or F12. It should say 20.</strong></li>
+        <li>Writing into the HTML output using document.write() - <strong>The answer to 50+50 = 100</strong></li>
+    </ol>
+
+    <p id="demo"></p>
+
+    <!--1. Writing into an alert box, using window.alert()-->
+<!--
+    <script>
+        window.alert(5 + 6);
+    </script>
+-->
+<!--skip window keyword-->
+<script>
+    alert(5 + 6);
+</script>
+
+<!--2. Using innerHTML-->
+    <script>
+        document.getElementById("demo").innerHTML = "*** No. 2 replaced the innerHTML that was here ***";
+    </script>
+
+<!--3. Writing into the browser console, using console.log()-->
+    <script>
+        console.log(10 + 10);
+    </script>
+
+<!--2. Writing into the HTML output using document.write()-->
+    <script>
+        document.write(50 + 50);
+    </script>100
+<!--inline script. After the page is loaded, if you then click to use document.write all will be replaced!-->
+<br> The page is loaded, so clicking this button will be replace all content '100'.
+
+<button type="button" class="button" onclick="document.write(50 + 50)"> What doess 50+50 equal to?</button>
+
+<script>
+let name='JavaScript';
+console.log(`My favourite person is ${name} because 
+it is cool`);
+</script>
+
+
+
+
+
+
+</body></html>

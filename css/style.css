@@ -1,7 +1,5 @@
-@import url('font/Friz Quadrata Regular.ttf');
-
 body {
-  font-family: 'Friz Quadrata', sans-serif;
+  font-family: 'Calibri', sans-serif;
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -156,7 +154,7 @@ body {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #333;
+  background-color: #0000007c;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px;
   z-index: 1;
@@ -194,7 +192,7 @@ body {
   position: absolute;
   top: 0; /* Aligns the top of the submenu with the top of the "Web Development" link */
   left: 100%; /* Positions the submenu to the right of "Web Development" link */
-  background-color: #333;
+  background-color: #0000007c;
   min-width: 160px;
 
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);

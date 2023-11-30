@@ -1,0 +1,88 @@
+/* Base styles - inherited by everything */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #600B14;
+    background-color: #EC8F30;
+}
+
+/* Make the h1 look like a banner */
+h1 {
+    color: #fdf2d1;
+    font-size: 2em; /* 32px by default (16 x 2 = 32) */
+    font-weight: 400;
+    background-color: #500911;
+    padding: 0.5em;
+    margin: 0 0 0.5em 0;
+}
+
+/* Remove space above H2 elements */
+h2 {
+    margin-top: 0;
+}
+
+/* Style the navigation bar and links */
+.navigation {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #00315e;
+    display: flex;
+}
+.navigation a {
+    text-decoration:none;
+    color: #fff;
+    font-weight: bold;
+    display: block;
+    padding: 0.75em 1em;
+}
+.navigation a:hover {
+    background-color: #00488d;
+}
+
+/*
+   Style the <footer> element
+   We can set the font-size, color and text-align properties here
+   and they will be inherited by elements contained within the <footer>
+ */
+footer {
+    text-align: center;
+    background-color: #0061BD;
+    color: #fefefe;
+    padding: 1em;
+    font-size: 0.875em; /* 14px  by default (16 x 0.875 = 14) */
+}
+
+
+/* +++ Everything below this comment is for the exercise +++ */
+
+
+/* This rule is for the <div> that encloses the whole page */
+.page-container {
+
+}
+
+/* This rule is for the main content of the page */
+main {
+
+}
+
+/* This grouped selector rule applies to both of the "regions" */
+.html-feature,
+.css-feature {
+
+}
+
+/* This rule is for the HTML article */
+.html-feature {
+    background-color: #FFBC8F; /* pale peach/orange */
+}
+
+/* This rule is for the CSS article */
+.css-feature {
+    background-color: #FFF59C; /* pale yellow */
+}
+
+@media (max-width: 500px)
+{
+    
+}
