@@ -3,6 +3,7 @@
         <title>Contact Us - Balloons Ltd.</title>
         
         <script src="../script/balloonsValidationForm.js" defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script>​
         <style>
             .field-error {
             color: red;
@@ -44,6 +45,11 @@
     <button id="button_A">Press me</button>
     <h3 id="heading_A"></h3>
     <button id="button_B">Press me too</button>
-    <div id="greeting"></div>
+    <div id="greeting">Greetings here</div>
+    <script>$(document).ready(function(){       
+        $("#button_B").click(function(){
+            $("#greeting").toggle();})
+        });
+    </script>
 </body>
 </html>
