@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Fetch starting point</title>
+
+    <style>
+      html,
+      pre {
+        font-family: sans-serif;
+      }
+
+      body {
+        width: 500px;
+        margin: 0 auto;
+        background-color: #ccc;
+      }
+
+      pre {
+        line-height: 1.5;
+        letter-spacing: 0.05rem;
+        padding: 1rem;
+        background-color: white;
+      }
+
+      label {
+        width: 200px;
+        margin-right: 33px;
+      }
+
+      select {
+        width: 350px;
+        padding: 5px;
+        
+      }
+      /* Tooltip container */
+      .tooltip {
+        position: relative;
+        display: inline-block;
+      }
+
+      /* Tooltip text */
+      .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 200px;
+        bottom: 100%;
+        left: 50%;
+        margin-left: -100px; /* Use half of the width (120/2 = 60), to center the tooltip */
+        background-color: white;
+        color: black;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+      
+        /* Position the tooltip text - see examples below! */
+        position: absolute;
+        z-index: 1;
+      }
+
+      /* Show the tooltip text when you mouse over the tooltip container */
+      .tooltip:hover .tooltiptext {
+        visibility: visible;
+      }
+      .tooltip .tooltiptext {
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.tooltip:hover .tooltiptext {
+  opacity: 1;
+}
+    </style>
+  </head>
+
+  <body>
+    <h1>Fetch starting point</h1>
+
+    <form>
+      <div class="tooltip">
+      <label class="lable" for="verse-choose">Choose a verse</label>
+      <select id="verse-choose" name="verse-choose">
+        <option>Verse 1</option>
+        <option>Verse 2</option>
+        <option>Verse 3</option>
+        <option>Verse 4</option>
+      </select>
+    </form>
+    <span class="tooltiptext">Tip: Use Scroll Wheel</span>
+</div>
+    <p><i></i></p>
+    <h2>The Conqueror Worm, <em>Edgar Allen Poe, 1843</em></h2>
+
+    <pre></pre>
+
+    <script>
+    const verseChoose = document.querySelector("select");
+      const poemDisplay = document.querySelector("pre");
+      // show default value on loading
+      updateDisplay("Verse 1");
+      verseChoose.value = "Verse 1";
+      // listens to change event
+      verseChoose.addEventListener("change", () => {
+        const verse = verseChoose.value;
+        updateDisplay(verse);
+      });
+      // Event listener for mouse wheel
+      verseChoose.addEventListener('wheel', function(event) {
+        if (event.deltaY < 0 && this.selectedIndex > 0) {
+            // Scrolling up
+            this.selectedIndex--;
+        } else if (event.deltaY > 0 && this.selectedIndex < this.length - 1) {
+            // Scrolling down
+            this.selectedIndex++;
+        }
+        // Trigger the change event manually
+        verseChoose.dispatchEvent(new Event('change'));
+        // Prevent the page from scrolling
+        event.preventDefault();
+    });
+
+      function updateDisplay(verse) {
+          verse = verse.replace(" ","").toLowerCase();
+          const url = `${verse}.txt`;
+          fetch (url).then((response)=> {
+            if (!response.ok)
+            {
+              throw new Error(`HTTP error: ${response.status}`);
+            }
+            return response.text();
+          })
+        .then((text) => {
+              poemDisplay.textContent = text;
+            })
+        .catch((error) => {
+    poemDisplay.textContent = `Could not fetch verse: ${error}`;
+  }); } </script>
+  </body>
+</html>
