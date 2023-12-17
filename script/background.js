@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function updateBackground() {
-      fetchNewImage(window.innerWidth, window.innerHeight, setBackground);
+      fetchNewImage(window.innerWidth*2, window.innerHeight*2, setBackground);
   }
 
   function preloadFirstImage() {
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (sessionCachedImage) {
           setBackground(sessionCachedImage);
       } else {
-          fetchNewImage(window.innerWidth*2, window.innerHeight*2, setBackground);
+          fetchNewImage(window.innerWidth, window.innerHeight, setBackground);
       }
   }
 
