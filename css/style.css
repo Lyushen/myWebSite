@@ -104,112 +104,13 @@ body {
     background-color: rgb(255, 255, 255);  
     color: black;
  }
-/* new nav bar */
- .navbar {
-  border-radius: 7px;
-  text-shadow:none;
-  background-color: #0000007c;
-/*   font-family: Arial, Helvetica, sans-serif; */
+
+ #nav-placeholder {
+  background-color: #0000003f;
+  border-radius: 9px;
 }
 
-.navbar a {
-  float: left;
-  font-size: 16px;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
 
-.navbar a:hover{
-  background-color: red;
-}
-
-.show {
-  display: block;
-}
-.navbar-right{
-  float: right;
-}
-.navbar a.active {
-  background-color: #04AA6D;
-  color: white;
-}
-
-/* dropdown content */
-.dropbtn {
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  background-color: #0000007c;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #0000007c;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px;
-  z-index: 1;
-}
-
-.dropdown-content a { /* actuall text in dropdown menu */
-  text-align: left;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {
-  background-color: red;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-.dropdown:hover .dropbtn {
-  background-color: red;
-}
-
-/* submenu */
-/* Submenu specific styles */
-.dropdown-submenu {
-  position: relative;
-  display: block; /* This makes sure that the submenu can be treated as a hoverable item */
-  padding: 0;
-}
-
-/* This targets the dropdown content that's a direct child of .dropdown-content */
-.dropdown-content > .dropdown-submenu > .submenu-content {
-  display: none; /* This keeps the submenu hidden until .dropdown-submenu is hovered */
-  position: absolute;
-  top: 0; /* Aligns the top of the submenu with the top of the "Web Development" link */
-  left: 100%; /* Positions the submenu to the right of "Web Development" link */
-  background-color: #0000007c;
-  min-width: 160px;
-
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 2; /* Higher z-index to ensure it stacks on top when visible */
-}
-
-/* This ensures the submenu is shown only when its parent .dropdown-submenu is hovered over */
-.dropdown-submenu:hover > .submenu-content {
-  display: block;
-}
-
-/* Optional: Style for the dropdown links to indicate they have a submenu */
-.dropdown-submenu > a:after {
-  content: " \25B6"; /* Unicode for right-pointing triangle */
-  font-size: 10px;
-  padding-left: 5px;
-}
 
 /* forms */
 input{
